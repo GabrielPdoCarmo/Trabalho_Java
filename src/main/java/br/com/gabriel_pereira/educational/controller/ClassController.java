@@ -1,4 +1,4 @@
-package br.com.gabriel_pereira.educacional.controller;
+package br.com.gabriel_pereira.educational.controller;
 
 import br.com.gabriel_pereira.educacional.dto.ClassDto;
 import br.com.gabriel_pereira.educacional.service.ClassService;

@@ -1,26 +1,34 @@
-package br.com.gabriel_pereira.educacional.model;
+package br.com.gabriel_pereira.educational.dto;
 
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
-import org.hibernate.annotations.OnDelete;
+import jakarta.validation.constraints.*;
 
-@Entity(name = "turmas")
-public class ClassModel {
+@JsonPropertyOrder({"id", "year", "semester", "courseDto"})
+public class ClassDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "ano")
+    @JsonProperty("ano")
+    @NotNull(message = "campo ano não pode ser nulo")
+    @Positive(message = "o campo ano só pode ser positivo")
     private Integer year;
 
-    @Column(name = "semestre")
+    @JsonProperty("semestre")
+    @Min(value = 1, message = "o campo semestre só pode ser 1 ou 2")
+    @Max(value = 2, message = "o campo semestre só pode ser 1 ou 2")
     private Integer semester;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "curso_id", nullable = false)
-    private CourseModel courseModel;
+    @JsonProperty(value = "curso_id", access = JsonProperty.Access.WRITE_ONLY)
+    @NotNull(message = "campo curso_id não pode ser nulo")
+    private Integer courseId;
 
-    public ClassModel() {
+    @JsonProperty("curso")
+    private CourseDto courseDto;
+
+    public ClassDto() {
     }
 
     public Integer getId() {
@@ -47,11 +55,19 @@ public class ClassModel {
         this.semester = semester;
     }
 
-    public CourseModel getCourseModel() {
-        return courseModel;
+    public Integer getCourseId() {
+        return courseId;
     }
 
-    public void setCourseModel(CourseModel courseModel) {
-        this.courseModel = courseModel;
+    public void setCourseId(Integer courseId) {
+        this.courseId = courseId;
+    }
+
+    public CourseDto getCourseDto() {
+        return courseDto;
+    }
+
+    public void setCourseDto(CourseDto courseDto) {
+        this.courseDto = courseDto;
     }
 }

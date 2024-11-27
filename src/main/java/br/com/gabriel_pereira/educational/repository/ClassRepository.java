@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Set;
 
 public interface ClassRepository extends JpaRepository<ClassModel, Integer> {
-        @Query("SELECT c FROM turmas c " +
+        @Query("SELECT c FROM ClassModel c " +
                 "WHERE (:year IS NULL OR c.year = :year) " +
                 "AND (:semester IS NULL OR c.semester = :semester) " +
                 "AND (:courseId IS NULL OR c.courseModel.id = :courseId)")
@@ -19,4 +19,5 @@ public interface ClassRepository extends JpaRepository<ClassModel, Integer> {
                 @Param("courseId") Integer courseId
         );
 }
+
 

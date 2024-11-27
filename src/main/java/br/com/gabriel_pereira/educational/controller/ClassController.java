@@ -1,6 +1,6 @@
 package br.com.gabriel_pereira.educational.controller;
 
-import br.com.gabriel_pereira.educacional.dto.ClassDto;
+import br.com.gabriel_pereira.educactional.dto.ClassDto;
 import br.com.gabriel_pereira.educacional.service.ClassService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;

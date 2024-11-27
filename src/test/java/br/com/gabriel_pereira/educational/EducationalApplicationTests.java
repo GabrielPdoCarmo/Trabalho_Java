@@ -1,4 +1,4 @@
-package br.com.gabriel_pereira-main.educational;
+package br.com.gabriel_pereira.educational;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

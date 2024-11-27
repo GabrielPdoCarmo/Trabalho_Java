@@ -1,10 +1,10 @@
-package br.com.gabriel_pereira-main.educational.service;
+package br.com.gabriel_pereira.educational.service;
 
-import br.com.gabriel_pereira-main.educational.dto.ProfessorDto;
-import br.com.gabriel_pereira-main.educational.model.ProfessorModel;
-import br.com.gabriel_pereira-main.educational.repository.ProfessorRepository;
-import br.com.gabriel_pereira-main.educational.service.exception.ResourceEmailAlreadyExistsException;
-import br.com.gabriel_pereira-main.educational.service.exception.ResourceNotFoundException;
+import br.com.gabriel_pereira.educational.dto.ProfessorDto;
+import br.com.gabriel_pereira.educational.model.ProfessorModel;
+import br.com.gabriel_pereira.educational.repository.ProfessorRepository;
+import br.com.gabriel_pereira.educational.service.exception.ResourceEmailAlreadyExistsException;
+import br.com.gabriel_pereira.educational.service.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

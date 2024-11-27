@@ -1,10 +1,10 @@
-package br.com.gabriel_pereira-main.educational.controller.exception;
+package br.com.gabriel_pereira.educational.controller.exception;
 
-import br.com.gabriel_pereira-main.educational.controller.exception.model.StandardError;
-import br.com.gabriel_pereira-main.educational.controller.exception.model.ValidationError;
-import br.com.gabriel_pereira-main.educational.service.exception.ResourceCodeAlreadyExistsException;
-import br.com.gabriel_pereira-main.educational.service.exception.ResourceEmailAlreadyExistsException;
-import br.com.gabriel_pereira-main.educational.service.exception.ResourceNotFoundException;
+import br.com.gabriel_pereira.educational.controller.exception.model.StandardError;
+import br.com.gabriel_pereira.educational.controller.exception.model.ValidationError;
+import br.com.gabriel_pereira.educational.service.exception.ResourceCodeAlreadyExistsException;
+import br.com.gabriel_pereira.educational.service.exception.ResourceEmailAlreadyExistsException;
+import br.com.gabriel_pereira.educational.service.exception.ResourceNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

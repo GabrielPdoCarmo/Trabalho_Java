@@ -1,4 +1,4 @@
-package br.com.gabriel_pereira-main.educational.dto;
+package br.com.gabriel_pereira.educational.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;

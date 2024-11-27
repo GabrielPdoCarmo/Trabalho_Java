@@ -1,4 +1,4 @@
-package br.com.gabriel_pereira-main.educational;
+package br.com.gabriel_pereira.educational;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

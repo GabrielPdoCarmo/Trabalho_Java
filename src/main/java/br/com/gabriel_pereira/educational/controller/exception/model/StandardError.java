@@ -1,4 +1,4 @@
-package br.com.gabriel_pereira-main.educational.controller.exception.model;
+package br.com.gabriel_pereira.educational.controller.exception.model;
 
 import java.io.Serializable;
 import java.time.Instant;

@@ -1,13 +1,13 @@
-package br.com.gabriel_pereira.educacional.service;
+package br.com.gabriel_pereira.educational.service;
 
-import br.com.gabriel_pereira.educacional.dto.DisciplineDto;
-import br.com.gabriel_pereira.educacional.dto.CourseDto;
-import br.com.gabriel_pereira.educacional.dto.ProfessorDto;
-import br.com.gabriel_pereira.educacional.model.CourseModel;
-import br.com.gabriel_pereira.educacional.model.DisciplineModel;
-import br.com.gabriel_pereira.educacional.repository.DisciplineRepository;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceCodeAlreadyExistsException;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceNotFoundException;
+import br.com.gabriel_pereira.educational.dto.DisciplineDto;
+import br.com.gabriel_pereira.educational.dto.CourseDto;
+import br.com.gabriel_pereira.educational.dto.ProfessorDto;
+import br.com.gabriel_pereira.educational.model.CourseModel;
+import br.com.gabriel_pereira.educational.model.DisciplineModel;
+import br.com.gabriel_pereira.educational.repository.DisciplineRepository;
+import br.com.gabriel_pereira.educational.service.exception.ResourceCodeAlreadyExistsException;
+import br.com.gabriel_pereira.educational.service.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;

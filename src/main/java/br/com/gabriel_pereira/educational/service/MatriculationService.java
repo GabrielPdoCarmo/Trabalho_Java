@@ -1,16 +1,16 @@
-package br.com.gabriel_pereira.educacional.service;
+package br.com.gabriel_pereira.educational.service;
 
-import br.com.gabriel_pereira.educacional.dto.ClassDto;
-import br.com.gabriel_pereira.educacional.dto.MatriculationDto;
-import br.com.gabriel_pereira.educacional.dto.MatriculationDto;
-import br.com.gabriel_pereira.educacional.dto.StudentDto;
-import br.com.gabriel_pereira.educacional.model.ClassModel;
-import br.com.gabriel_pereira.educacional.model.MatriculationModel;
-import br.com.gabriel_pereira.educacional.model.MatriculationModel;
-import br.com.gabriel_pereira.educacional.model.StudentModel;
-import br.com.gabriel_pereira.educacional.repository.MatriculationRepository;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceCodeAlreadyExistsException;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceNotFoundException;
+import br.com.gabriel_pereira.educational.dto.ClassDto;
+import br.com.gabriel_pereira.educational.dto.MatriculationDto;
+import br.com.gabriel_pereira.educational.dto.MatriculationDto;
+import br.com.gabriel_pereira.educational.dto.StudentDto;
+import br.com.gabriel_pereira.educational.model.ClassModel;
+import br.com.gabriel_pereira.educational.model.MatriculationModel;
+import br.com.gabriel_pereira.educational.model.MatriculationModel;
+import br.com.gabriel_pereira.educational.model.StudentModel;
+import br.com.gabriel_pereira.educational.repository.MatriculationRepository;
+import br.com.gabriel_pereira.educational.service.exception.ResourceCodeAlreadyExistsException;
+import br.com.gabriel_pereira.educational.service.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;

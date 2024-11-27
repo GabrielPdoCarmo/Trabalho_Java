@@ -1,10 +1,10 @@
-package br.com.gabriel_pereira.educacional.service;
+package br.com.gabriel_pereira.educational.service;
 
-import br.com.gabriel_pereira.educacional.dto.ClassDto;
-import br.com.gabriel_pereira.educacional.dto.CourseDto;
-import br.com.gabriel_pereira.educacional.model.ClassModel;
-import br.com.gabriel_pereira.educacional.repository.ClassRepository;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceNotFoundException;
+import br.com.gabriel_pereira.educational.dto.ClassDto;
+import br.com.gabriel_pereira.educational.dto.CourseDto;
+import br.com.gabriel_pereira.educational.model.ClassModel;
+import br.com.gabriel_pereira.educational.repository.ClassRepository;
+import br.com.gabriel_pereira.educational.service.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

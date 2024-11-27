@@ -1,11 +1,9 @@
-package br.com.gabriel_pereira.educacional.service;
+package br.com.gabriel_pereira.educational.service;
 
-import br.com.gabriel_pereira.educacional.dto.DisciplineDto;
-import br.com.gabriel_pereira.educacional.dto.NoteDto;
-import br.com.gabriel_pereira.educacional.dto.MatriculationDto;
-import br.com.gabriel_pereira.educacional.model.NoteModel;
-import br.com.gabriel_pereira.educacional.repository.NoteRepository;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceNotFoundException;
+import br.com.gabriel_pereira.educational.dto.*;
+import br.com.gabriel_pereira.educational.model.NoteModel;
+import br.com.gabriel_pereira.educational.repository.NoteRepository;
+import br.com.gabriel_pereira.educational.service.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.HashSet;
@@ -19,10 +17,13 @@ public class NoteService {
     private final MatriculationService matriculationService;
     private final DisciplineService disciplineService;
 
-    public NoteService(NoteRepository noteRepository, MatriculationService matriculationService, DisciplineService disciplineService) {
+    private final ClassService classService;
+
+    public NoteService(NoteRepository noteRepository, MatriculationService matriculationService, DisciplineService disciplineService, ClassService classService) {
         this.noteRepository = noteRepository;
         this.matriculationService = matriculationService;
         this.disciplineService = disciplineService;
+        this.classService = classService;
     }
 
     public void createdNote (NoteDto noteDto) {
@@ -70,6 +71,61 @@ public class NoteService {
     public void delete (Integer id) {
         NoteDto noteDto = findById(id);
         noteRepository.delete(CONVERT_DTO_TO_MODEL(noteDto));
+    }
+
+    public Set<NoteReportsDto> getNotesByAlunoId(Integer id) {
+        List<NoteModel> lstNoteModel = noteRepository.findByStudentId(id).orElseThrow(
+                () -> new ResourceNotFoundException("Id not found")
+        );
+
+        Set<NoteReportsDto> noteReportsDtoSet = new HashSet<>();
+
+        for(NoteModel noteModel : lstNoteModel) {
+            NoteReportsDto noteReportsDto = new NoteReportsDto();
+            noteReportsDto.setId(noteModel.getId());
+            noteReportsDto.setNote(noteModel.getNote());
+            noteReportsDto.setLaunch_date(noteModel.getLaunch_date());
+            noteReportsDto.setDisciplineReportsDto(new DisciplineReportsDto(
+                    noteModel.getDisciplineModel().getId(),
+                    noteModel.getDisciplineModel().getName(),
+                    noteModel.getDisciplineModel().getCode())
+            );
+            noteReportsDtoSet.add(noteReportsDto);
+        }
+
+        return noteReportsDtoSet;
+    }
+
+    public AverageClassDto averageNotesByClass(Integer id) {
+        List<NoteModel> lstNoteModel = noteRepository.findByClassId(id).orElseThrow(
+                () -> new ResourceNotFoundException("Id not found")
+        );
+
+        Double average = 0.0;
+
+        for(NoteModel noteModel : lstNoteModel) {
+            average += noteModel.getNote();
+        }
+
+        average = average/lstNoteModel.size();
+
+        return new AverageClassDto(classService.findById(id), average);
+    }
+
+    public AverageDisciplineDto averageNotesByDiscipline(Integer id) {
+        List<NoteModel> lstNoteModel = noteRepository.findByDisciplineId(id).orElseThrow(
+                () -> new ResourceNotFoundException("Id not found")
+        );
+
+        Double average = 0.0;
+
+        for(NoteModel noteModel : lstNoteModel) {
+            average += noteModel.getNote();
+        }
+
+        average = average/lstNoteModel.size();
+
+        return new AverageDisciplineDto(disciplineService.findById(id), average);
     }
 
     private MatriculationDto getMatriculation (NoteDto noteDto) {

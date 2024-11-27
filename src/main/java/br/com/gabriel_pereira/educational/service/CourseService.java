@@ -1,12 +1,12 @@
-package br.com.gabriel_pereira.educacional.service;
+package br.com.gabriel_pereira.educational.service;
 
-import br.com.gabriel_pereira.educacional.dto.CourseDto;
-import br.com.gabriel_pereira.educacional.model.CourseModel;
-import br.com.gabriel_pereira.educacional.model.StudentModel;
-import br.com.gabriel_pereira.educacional.repository.CourseRepository;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceCodeAlreadyExistsException;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceEmailAlreadyExistsException;
-import br.com.gabriel_pereira.educacional.service.exception.ResourceNotFoundException;
+import br.com.gabriel_pereira.educational.dto.CourseDto;
+import br.com.gabriel_pereira.educational.model.CourseModel;
+import br.com.gabriel_pereira.educational.model.StudentModel;
+import br.com.gabriel_pereira.educational.repository.CourseRepository;
+import br.com.gabriel_pereira.educational.service.exception.ResourceCodeAlreadyExistsException;
+import br.com.gabriel_pereira.educational.service.exception.ResourceEmailAlreadyExistsException;
+import br.com.gabriel_pereira.educational.service.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

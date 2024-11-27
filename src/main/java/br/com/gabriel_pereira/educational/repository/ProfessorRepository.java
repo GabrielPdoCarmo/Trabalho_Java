@@ -1,7 +1,7 @@
-package br.com.gabriel_pereira.educacional.repository;
+package br.com.gabriel_pereira.educational.repository;
 
-import br.com.gabriel_pereira.educacional.model.ProfessorModel;
-import br.com.gabriel_pereira.educacional.model.StudentModel;
+import br.com.gabriel_pereira.educational.model.ProfessorModel;
+import br.com.gabriel_pereira.educational.model.StudentModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

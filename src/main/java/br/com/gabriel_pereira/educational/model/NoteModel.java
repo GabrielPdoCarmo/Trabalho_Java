@@ -1,4 +1,4 @@
-package br.com.gabriel_pereira.educacional.model;
+package br.com.gabriel_pereira.educational.model;
 
 import jakarta.persistence.*;
 

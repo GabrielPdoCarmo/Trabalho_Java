@@ -1,8 +1,8 @@
-package br.com.gabriel_pereira.educacional.repository;
+package br.com.gabriel_pereira.educational.repository;
 
-import br.com.gabriel_pereira.educacional.model.ClassModel;
-import br.com.gabriel_pereira.educacional.model.MatriculationModel;
-import br.com.gabriel_pereira.educacional.model.StudentModel;
+import br.com.gabriel_pereira.educational.model.ClassModel;
+import br.com.gabriel_pereira.educational.model.MatriculationModel;
+import br.com.gabriel_pereira.educational.model.StudentModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;

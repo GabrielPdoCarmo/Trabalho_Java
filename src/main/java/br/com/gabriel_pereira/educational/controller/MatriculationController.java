@@ -1,7 +1,7 @@
-package br.com.gabriel_pereira.educacional.controller;
+package br.com.gabriel_pereira.educational.controller;
 
-import br.com.gabriel_pereira.educacional.dto.MatriculationDto;
-import br.com.gabriel_pereira.educacional.service.MatriculationService;
+import br.com.gabriel_pereira.educational.dto.MatriculationDto;
+import br.com.gabriel_pereira.educational.service.MatriculationService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

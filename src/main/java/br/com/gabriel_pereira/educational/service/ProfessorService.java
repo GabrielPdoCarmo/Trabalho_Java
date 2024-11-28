@@ -76,10 +76,10 @@ public class ProfessorService {
     public static ProfessorModel COVERT_DTO_TO_MODEL(ProfessorDto professorDto) {
         ProfessorModel professorModel = new ProfessorModel();
         professorModel.setId(professorDto.getId() != null ? professorDto.getId() : null);
-        professorModel.setName(professorDto.getName());
+        professorModel.setNome(professorDto.getNome());
         professorModel.setEmail(professorDto.getEmail());
-        professorModel.setPhone(professorDto.getPhone());
-        professorModel.setSpecialty(professorDto.getSpecialty());
+        professorModel.setTelefone(professorDto.gettelesetTelefone());
+        professorModel.setEspecialidade(professorDto.getEsetEspecialidade());
 
         return professorModel;
     }
@@ -87,10 +87,10 @@ public class ProfessorService {
     public static ProfessorDto COVERT_MODEL_TO_DTO(ProfessorModel professorModel) {
         ProfessorDto professorDto = new ProfessorDto();
         professorDto.setId(professorModel.getId() != null ? professorModel.getId() : null);
-        professorDto.setName(professorModel.getName());
+        professorDto.setNome(professorModel.getNome());
         professorDto.setEmail(professorModel.getEmail());
-        professorDto.setPhone(professorModel.getPhone());
-        professorDto.setSpecialty(professorModel.getSpecialty());
+        professorDto.setTelefone(professorModel.gettelesetTelefone());
+        professorDto.setEspecialidade(professorModel.getEsetEspecialidade());
 
         return professorDto;
     }

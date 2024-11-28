@@ -2,14 +2,12 @@ package br.com.gabriel_pereira.educational.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.PastOrPresent;
+
+import jakarta.validation.constraints.*;
 
 import java.util.Date;
 
-public class ProfessorDto {
+public class AlunoDto {
 
     private Integer id;
 
@@ -21,15 +19,17 @@ public class ProfessorDto {
     @Email(message = "o campo precisa ser preenchido com um email")
     private String email;
 
-    @JsonProperty("telefone")
-    @NotBlank(message = "campo telefone não pode ser nulo")
-    private String telefone;
+    @JsonProperty("matricula")
+    @NotBlank(message = "campo matricula não pode ser nula")
+    private String matricula;
 
-    @JsonProperty("especialidade")
-    @NotBlank(message = "campo especialidade não pode ser nulo")
-    private String especialidade;
+    @JsonProperty("data_nascimento")
+    @NotNull(message = "campo data_nascimento não pode ser nulo")
+    @PastOrPresent(message = "data_nascimento não pode ser uma data futura")
+    @JsonFormat(pattern="yyyy-MM-dd")
+    private Date dataNascimento;
 
-    public ProfessorDto() {
+    public AlunoDto() {
 
     }
 
@@ -57,19 +57,19 @@ public class ProfessorDto {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }

@@ -4,8 +4,8 @@ import jakarta.persistence.*;
 
 import java.util.Date;
 
-@Entity(name = "professores")
-public class ProfessorModel {
+@Entity(name = "alunos")
+public class AlunoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,13 +17,14 @@ public class ProfessorModel {
     @Column
     private String email;
 
-    @Column(name = "telefone")
-    private String telefone;
+    @Column(name = "matricula")
+    private String matricula;
 
-    @Column(name = "especialidade")
-    private String especialidade;
+    @Column(name = "data_nascimento")
+    @Temporal(TemporalType.DATE)
+    private Date dataNascimento;
 
-    public ProfessorModel() {
+    public AlunoModel() {
 
     }
 
@@ -51,19 +52,19 @@ public class ProfessorModel {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
+    public String getMatricula() {
+        return matricula;
     }
 
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
     }
 
-    public String getEspecialidade() {
-        return especialidade;
+    public Date getDataNascimento() {
+        return dataNascimento;
     }
 
-    public void setEspecialidade(String especialidade) {
-        this.especialidade = especialidade;
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 }

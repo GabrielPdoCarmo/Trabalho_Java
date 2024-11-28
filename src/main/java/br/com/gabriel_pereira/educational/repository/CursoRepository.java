@@ -1,12 +1,13 @@
 package br.com.gabriel_pereira.educational.repository;
 
+import br.com.gabriel_pereira.educational.model.CursoModel;
 import br.com.gabriel_pereira.educational.model.ProfessorModel;
-import br.com.gabriel_pereira.educational.model.AlunoModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;
 
-public interface ProfessorRepository extends JpaRepository<ProfessorModel, Integer> {
+public interface CursoRepository extends JpaRepository<CursoModel, Integer> {
 
-    Optional<ProfessorModel> findByEmail(String email);
+    Optional<CursoModel> findByCodigo (String codigo);
+
 }

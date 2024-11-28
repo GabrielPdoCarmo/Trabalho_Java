@@ -13,39 +13,39 @@ import java.util.Set;
 @RequestMapping("api/v1/matriculas")
 public class MatriculaController {
 
-    private final MatriculaService MatriculaService;
+    private final MatriculaService matriculaService;
 
-    public MatriculaController(MatriculaService MatriculaService) {
-        this.MatriculaService = MatriculaService;
+    public MatriculaController(MatriculaService matriculaService) {
+        this.matriculaService = matriculaService;
     }
 
     @PostMapping
-    public ResponseEntity<MatriculaDto> createMatricula(@RequestBody @Valid matriculaDto) {
-        MatriculaService.createdMatricula(matriculaDto);
+    public ResponseEntity<MatriculaDto> createMatricula(@RequestBody @Valid MatriculaDto matriculaDto) {
+        matriculaService.createdMatricula(matriculaDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
     public ResponseEntity<Set<MatriculaDto>> findAllMatriculas() {
-        Set<MatriculaDto> matriculas = MatriculaService.findAllMatriculas();
+        Set<MatriculaDto> matriculas = matriculaService.findAllMatriculas();
         return ResponseEntity.ok(matriculas);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<MatriculaDto> findMatriculaById(@PathVariable Integer id) {
-        MatriculaDtomatricula = MatriculaService.findById(id);
+        MatriculaDto matricula = matriculaService.findById(id);
         return ResponseEntity.ok(matricula);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<MatriculaDto> updateMatricula(@PathVariable Integer id, @RequestBody @Valid matriculaDto) {
-        MatriculaService.updateMatricula(id, matriculaDto);
+    public ResponseEntity<MatriculaDto> updateMatricula(@PathVariable Integer id, @RequestBody @Valid MatriculaDto matriculaDto) {
+        matriculaService.updateMatricula(id, matriculaDto);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteMatricula(@PathVariable Integer id) {
-        MatriculaService.delete(id);
+        matriculaService.delete(id);
         return ResponseEntity.noContent().build();
     }
 }

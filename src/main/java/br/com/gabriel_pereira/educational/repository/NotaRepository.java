@@ -9,13 +9,12 @@ import java.util.List;
 import java.util.Optional;
 
 public interface NotaRepository extends JpaRepository<NotaModel, Integer> {
-    @Query("SELECT n FROM notas n WHERE n.MatriculaModel.AlunoModel.id = :alunoId")
+    @Query("SELECT n FROM notas n WHERE n.matriculaModel.alunoModel.id = :alunoId")
     Optional<List<NotaModel>> findByAlunoId(@Param("alunoId") Integer alunoId);
 
-    @Query("SELECT n FROM notas n WHERE n.MatriculaModel.TurmaModel.id = :turmaId")
+    @Query("SELECT n FROM notas n WHERE n.matriculaModel.turmaModel.id = :turmaId")
     Optional<List<NotaModel>> findByTurmaId(@Param("turmaId") Integer turmaId);
 
-    @Query("SELECT n FROM notas n WHERE n.DisciplinaModel.id = :disciplinaId")
+    @Query("SELECT n FROM notas n WHERE n.disciplinaModel.id = :disciplinaId")
     Optional<List<NotaModel>> findByDisciplinaId(@Param("disciplinaId") Integer disciplinaId);
 }
-

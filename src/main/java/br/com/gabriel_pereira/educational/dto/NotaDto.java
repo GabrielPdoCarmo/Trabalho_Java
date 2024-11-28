@@ -37,10 +37,10 @@ public class NotaDto {
     private Integer disciplinaId;
 
     @JsonProperty("matricula")
-    private MatriculaDtoMatriculaDto;
+    private MatriculaDto matriculaDto;
 
     @JsonProperty("disciplina")
-    private DisciplinaDto DisciplinaDto;
+    private DisciplinaDto disciplinaDto;
 
     public NotaDto() {
     }
@@ -85,19 +85,19 @@ public class NotaDto {
         this.disciplinaId = disciplinaId;
     }
 
-    public MatriculaDtogetMatriculaDto() {
-        return MatriculaDto;
+    public MatriculaDto getMatriculaDto() {
+        return matriculaDto;
     }
 
-    public void setMatriculaDto(MatriculaDtoMatriculaDto) {
-        this.MatriculaDto= MatriculaDto;
+    public void setMatriculaDto(MatriculaDto matriculaDto) {
+        this.matriculaDto= matriculaDto;
     }
 
     public DisciplinaDto getDisciplinaDto() {
-        return DisciplinaDto;
+        return disciplinaDto;
     }
 
-    public void setDisciplinaDto(DisciplinaDto DisciplinaDto) {
-        this.DisciplinaDto = DisciplinaDto;
+    public void setDisciplinaDto(DisciplinaDto disciplinaDto) {
+        this.disciplinaDto = disciplinaDto;
     }
 }

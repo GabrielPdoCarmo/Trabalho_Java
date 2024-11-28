@@ -78,8 +78,8 @@ public class ProfessorService {
         professorModel.setId(professorDto.getId() != null ? professorDto.getId() : null);
         professorModel.setNome(professorDto.getNome());
         professorModel.setEmail(professorDto.getEmail());
-        professorModel.setTelefone(professorDto.gettelesetTelefone());
-        professorModel.setEspecialidade(professorDto.getEsetEspecialidade());
+        professorModel.setTelefone(professorDto.getTelefone());
+        professorModel.setEspecialidade(professorDto.getEspecialidade());
 
         return professorModel;
     }
@@ -89,8 +89,8 @@ public class ProfessorService {
         professorDto.setId(professorModel.getId() != null ? professorModel.getId() : null);
         professorDto.setNome(professorModel.getNome());
         professorDto.setEmail(professorModel.getEmail());
-        professorDto.setTelefone(professorModel.gettelesetTelefone());
-        professorDto.setEspecialidade(professorModel.getEsetEspecialidade());
+        professorDto.setTelefone(professorModel.getTelefone());
+        professorDto.setEspecialidade(professorModel.getEspecialidade());
 
         return professorDto;
     }

@@ -54,7 +54,7 @@ public class NotaModel {
     }
 
     public MatriculaModel getMatriculaModel() {
-        return MatriculaModel;
+        return matriculaModel;
     }
 
     public void setMatriculaModel(MatriculaModel matriculaModel) {

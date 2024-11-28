@@ -74,7 +74,7 @@ public class TurmaService {
     private CursoDto getCursoDto(TurmaDto turmaDto) {
         CursoDto cursoDto;
         try {
-            turmaDto = cursoService.findById(turmaDto.getcursoId());
+            cursoDto = cursoService.findById(turmaDto.getCursoId());
         } catch (ResourceNotFoundException ex) {
             throw new ResourceNotFoundException("curso_id não foi encontrado");
         }

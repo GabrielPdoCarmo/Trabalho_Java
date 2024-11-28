@@ -18,10 +18,10 @@ public class MatriculaDto{
     private Integer turmaId;
 
     @JsonProperty("aluno")
-    private AlunoDto AlunoDto;
+    private AlunoDto alunoDto;
 
     @JsonProperty("turma")
-    private TurmaDto TurmaDto;
+    private TurmaDto turmaDto;
 
     public MatriculaDto() {
     }
@@ -51,18 +51,18 @@ public class MatriculaDto{
     }
 
     public AlunoDto getAlunoDto() {
-        return AlunoDto;
+        return alunoDto;
     }
 
-    public void setAlunoDto(AlunoDto AlunoDto) {
-        this.AlunoDto = AlunoDto;
+    public void setAlunoDto(AlunoDto alunoDto) {
+        this.alunoDto = alunoDto;
     }
 
     public TurmaDto getTurmaDto() {
-        return TurmaDto;
+        return turmaDto;
     }
 
-    public void setTurmaDto(TurmaDto TurmaDto) {
-        this.TurmaDto = TurmaDto;
+    public void setTurmaDto(TurmaDto turmaDto) {
+        this.turmaDto = turmaDto;
     }
 }

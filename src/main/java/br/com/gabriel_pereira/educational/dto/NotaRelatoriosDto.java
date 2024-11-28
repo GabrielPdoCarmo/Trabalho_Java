@@ -25,7 +25,7 @@ public class NotaRelatoriosDto {
     private Date dataLancamento;
 
     @JsonProperty("disciplina")
-    private DisciplinaRelatoriosDto DisciplinaDto;
+    private DisciplinaRelatoriosDto disciplinaDto;
 
     public NotaRelatoriosDto() {
     }
@@ -54,7 +54,7 @@ public class NotaRelatoriosDto {
         this.dataLancamento = dataLancamento;
     }
 
-    public void setDisciplinaRelatoriosDto(DisciplinaRelatoriosDto DisciplinaDto) {
-        this.DisciplinaDto = DisciplinaDto;
+    public void setDisciplinaRelatoriosDto(DisciplinaRelatoriosDto disciplinaDto) {
+        this.disciplinaDto = disciplinaDto;
     }
 }

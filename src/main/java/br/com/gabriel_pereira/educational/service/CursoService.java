@@ -65,7 +65,7 @@ public class CursoService {
         CursoDto verifyCursoDto = findById(id);
         CursoModel cursoModel = CONVERT_DTO_TO_MODEL(verifyCursoDto);
         cursoModel.setId(id);
-        cursoRepository.delete(CursoModel);
+        cursoRepository.delete(cursoModel);
     }
 
     private void verifyCodigo (CursoDto cursoDto) {
@@ -77,7 +77,7 @@ public class CursoService {
     }
 
     public static CursoModel CONVERT_DTO_TO_MODEL(CursoDto cursoDto) {
-        CursoModel cursoDto = new CursoModel();
+        CursoModel cursoModel = new CursoModel();
         cursoModel.setId(cursoDto.getId() != null ? cursoDto.getId() : null);
         cursoModel.setNome(cursoDto.getNome());
         cursoModel.setCodigo(cursoDto.getCodigo());

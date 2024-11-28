@@ -6,7 +6,7 @@ import br.com.gabriel_pereira.educational.dto.ProfessorDto;
 import br.com.gabriel_pereira.educational.model.CursoModel;
 import br.com.gabriel_pereira.educational.model.DisciplinaModel;
 import br.com.gabriel_pereira.educational.repository.DisciplinaRepository;
-import br.com.gabriel_pereira.educational.service.exception.ResourcesetCodeAlreadyExistsException;
+import br.com.gabriel_pereira.educational.service.exception.ResourceCodeAlreadyExistsException;
 import br.com.gabriel_pereira.educational.service.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -28,22 +28,22 @@ public class DisciplinaService {
         this.professorService = professorService;
     }
 
-    public void createDiscipline(DisciplinaDto disciplinaDto) {
+    public void createDisciplina(DisciplinaDto disciplinaDto) {
 
         verifyCodigo(disciplinaDto);
 
-        CursoDto CursoDto = getCursoDto(disciplinaDto);
+        CursoDto cursoDto = getCursoDto(disciplinaDto);
         ProfessorDto professorDto = getProfessorDto(disciplinaDto);
 
-        DisciplinaDto.setCursoDto(CursoDto);
-        DisciplinaDto.setProfessorDto(professorDto);
+        disciplinaDto.setCursoDto(cursoDto);
+        disciplinaDto.setProfessorDto(professorDto);
 
         DisciplinaModel disciplinaModel = CONVERT_DTO_TO_MODEL(disciplinaDto);
 
         disciplinaRepository.save(disciplinaModel);
     }
 
-    public void updateDiscipline(DisciplinaDto disciplinaDto, Integer id) {
+    public void updateDisciplina(DisciplinaDto disciplinaDto, Integer id) {
 
         DisciplinaDto verifyDisciplinaDto = findById(id);
 
@@ -80,7 +80,7 @@ public class DisciplinaService {
         return lstDisciplinaDto;
     }
 
-    public void deleteDiscipline(Integer id) {
+    public void deleteDisciplina(Integer id) {
         DisciplinaDto verifyDisciplinaDto = findById(id);
         DisciplinaModel disciplinaModel = CONVERT_DTO_TO_MODEL(verifyDisciplinaDto);
         disciplinaModel.setId(id);
@@ -132,7 +132,7 @@ public class DisciplinaService {
         DisciplinaDto disciplinaDto = new DisciplinaDto();
         disciplinaDto.setId(disciplinaModel.getId() != null ? disciplinaModel.getId() : null);
         disciplinaDto.setNome(disciplinaModel.getNome());
-        disciplinaDto.setCodigo(disciplinaModel.getsetCodigo());
+        disciplinaDto.setCodigo(disciplinaModel.getCodigo());
         disciplinaDto.setCursoId(disciplinaModel.getCursoModel().getId() != null ? disciplinaModel.getCursoModel().getId() : null);
         disciplinaDto.setProfessorId(disciplinaModel.getProfessorModel().getId() != null ? disciplinaModel.getProfessorModel().getId() : null);
         disciplinaDto.setCursoDto(disciplinaModel.getCursoModel() != null ? CursoService.CONVERT_MODEL_TO_DTO(disciplinaModel.getCursoModel()) : null);

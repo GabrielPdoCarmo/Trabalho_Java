@@ -26,9 +26,9 @@ public class NotaService {
         this.turmaService = turmaService;
     }
 
-    public void createdNote (NotaDto notaDto) {
-        MatriculaDto matriculaDto= getMatriculation(notaDto);
-        DisciplinaDto DisciplinaDto = getDiscipline(notaDto);
+    public void createdNota(NotaDto notaDto) {
+        MatriculaDto matriculaDto= getMatricula(notaDto);
+        DisciplinaDto DisciplinaDto = getDisciplina(notaDto);
 
         notaDto.setMatriculaDto(matriculaDto);
         notaDto.setDisciplinaDto(DisciplinaDto);
@@ -38,11 +38,11 @@ public class NotaService {
         notaRepository.save(notaModel);
     }
 
-    public Set<NotaDto> findAllMatrilations () {
+    public Set<NotaDto> findAllMatriculas () {
         List<NotaModel> notaModelList = notaRepository.findAll();
-        Set<NotaDto> NotaDtoSet = new HashSet<>();
+        Set<NotaDto> notaDtoSet = new HashSet<>();
 
-        for(NotaModel notaModel : NotaModelList) {
+        for(NotaModel notaModel : notaModelList) {
             notaDtoSet.add(CONVERT_MODEL_TO_DTO(notaModel));
         }
 
@@ -55,10 +55,10 @@ public class NotaService {
         return CONVERT_MODEL_TO_DTO(notaModel);
     }
 
-    public void updateNote (Integer id, NotaDto notaDto) {
+    public void updateNota (Integer id, NotaDto notaDto) {
         NotaDto notaDtoOld = findById(id);
-        MatriculaDto matriculaDto= getMatriculation(notaDto);
-        DisciplinaDto disciplinaDto = getDiscipline(notaDto);
+        MatriculaDto matriculaDto= getMatricula(notaDto);
+        DisciplinaDto disciplinaDto = getDisciplina(notaDto);
 
         notaDto.setMatriculaDto(matriculaDto);
         notaDto.setDisciplinaDto(disciplinaDto);
@@ -74,7 +74,7 @@ public class NotaService {
     }
 
     public Set<NotaRelatoriosDto> getNotesByAlunoId(Integer id) {
-        List<NotaModel> lstNotaModel = notaRepository.findByStudentId(id).orElseThrow(
+        List<NotaModel> lstNotaModel = notaRepository.findByAlunoId(id).orElseThrow(
                 () -> new ResourceNotFoundException("Id not found")
         );
 
@@ -83,12 +83,12 @@ public class NotaService {
         for(NotaModel notaModel : lstNotaModel) {
             NotaRelatoriosDto notaRelatoriosDto = new NotaRelatoriosDto();
             notaRelatoriosDto.setId(notaModel.getId());
-            notaRelatoriosDto.setNote(notaModel.getNote());
-            notaRelatoriosDto.setLaunch_date(notaModel.getLaunch_date());
+            notaRelatoriosDto.setNota(notaModel.getNota());
+            notaRelatoriosDto.setDataLancamento(notaModel.getDataLancamento());
             notaRelatoriosDto.setDisciplinaRelatoriosDto(new DisciplinaRelatoriosDto(
                     notaModel.getDisciplinaModel().getId(),
-                    notaModel.getDisciplinaModel().getName(),
-                    notaModel.getDisciplinaModel().getCode())
+                    notaModel.getDisciplinaModel().getNome(),
+                    notaModel.getDisciplinaModel().getCodigo())
             );
             notaRelatoriosDtoSet.add(notaRelatoriosDto);
         }
@@ -97,14 +97,14 @@ public class NotaService {
     }
 
     public MediaTurmaDto averageNotesByClass(Integer id) {
-        List<NotaModel> lstNotaModel = notaRepository.findByClassId(id).orElseThrow(
+        List<NotaModel> lstNotaModel = notaRepository.findByTurmaId(id).orElseThrow(
                 () -> new ResourceNotFoundException("Id not found")
         );
 
         Double average = 0.0;
 
         for(NotaModel notaModel : lstNotaModel) {
-            average += notaModel.getNote();
+            average += notaModel.getNota();
         }
 
         average = average/lstNotaModel.size();
@@ -113,14 +113,14 @@ public class NotaService {
     }
 
     public MediaDisciplinaDto averageNotesByDiscipline(Integer id) {
-        List<NotaModel> lstNotaModel = notaRepository.findByDisciplineId(id).orElseThrow(
+        List<NotaModel> lstNotaModel = notaRepository.findByDisciplinaId(id).orElseThrow(
                 () -> new ResourceNotFoundException("Id not found")
         );
 
         Double average = 0.0;
 
         for(NotaModel notaModel : lstNotaModel) {
-            average += notaModel.getNote();
+            average += notaModel.getNota();
         }
 
         average = average/lstNotaModel.size();
@@ -128,20 +128,20 @@ public class NotaService {
         return new MediaDisciplinaDto(disciplinaService.findById(id), average);
     }
 
-    private MatriculaDtogetMatriculation (NotaDto notaDto) {
+    private MatriculaDto getMatricula(NotaDto notaDto) {
         MatriculaDto matriculaDto;
         try {
-            matriculaDto= matriculaService.findById(notaDto.getMatriculationId());
+            matriculaDto= matriculaService.findById(notaDto.getMatriculaId());
         } catch (ResourceNotFoundException ex) {
             throw new ResourceNotFoundException(ex.getMessage());
         }
         return matriculaDto;
     }
 
-    private DisciplinaDto getDiscipline(NotaDto notaDto) {
+    private DisciplinaDto getDisciplina(NotaDto notaDto) {
         DisciplinaDto disciplinaDto;
         try {
-            disciplinaDto = disciplinaService.findById(notaDto.getDisciplineId());
+            disciplinaDto = disciplinaService.findById(notaDto.getDisciplinaId());
         } catch (ResourceNotFoundException ex) {
             throw new ResourceNotFoundException(ex.getMessage());
         }
@@ -151,8 +151,8 @@ public class NotaService {
     public static NotaModel CONVERT_DTO_TO_MODEL(NotaDto notaDto) {
         NotaModel notaModel = new NotaModel();
         notaModel.setId(notaDto.getId() != null ? notaDto.getId() : null);
-        notaModel.setNote(notaDto.getNote());
-        notaModel.setLaunch_date(notaDto.getLaunch_date());
+        notaModel.setNota(notaDto.getNota());
+        notaModel.setDataLancamento(notaDto.getDataLancamento());
         notaModel.setMatriculaModel(notaDto.getMatriculaDto() != null ? MatriculaService.CONVERT_DTO_TO_MODEL(notaDto.getMatriculaDto()) : null);
         notaModel.setDisciplinaModel(notaDto.getDisciplinaDto() != null ? DisciplinaService.CONVERT_DTO_TO_MODEL(notaDto.getDisciplinaDto()) : null);
 
@@ -162,10 +162,10 @@ public class NotaService {
     private NotaDto CONVERT_MODEL_TO_DTO(NotaModel notaModel) {
         NotaDto notaDto = new NotaDto();
         notaDto.setId(notaModel.getId() != null ? notaModel.getId() : null);
-        notaDto.setNote(notaModel.getNote());
-        notaDto.setLaunch_date(notaModel.getLaunch_date());
-        notaDto.setMatriculationId(notaModel.getMatriculaModel().getId() != null ? notaModel.getMatriculaModel().getId() : null);
-        notaDto.setDisciplineId(notaModel.getDisciplinaModel().getId() != null ? notaModel.getDisciplinaModel().getId() : null);
+        notaDto.setNota(notaModel.getNota());
+        notaDto.setDataLancamento(notaModel.getDataLancamento());
+        notaDto.setMatriculaId(notaModel.getMatriculaModel().getId() != null ? notaModel.getMatriculaModel().getId() : null);
+        notaDto.setDisciplinaId(notaModel.getDisciplinaModel().getId() != null ? notaModel.getDisciplinaModel().getId() : null);
         notaDto.setMatriculaDto(notaModel.getMatriculaModel() != null ? MatriculaService.CONVERT_MODEL_TO_DTO(notaModel.getMatriculaModel()) : null);
         notaDto.setDisciplinaDto(notaModel.getDisciplinaModel() != null ? DisciplinaService.CONVERT_MODEL_TO_DTO(notaModel.getDisciplinaModel()) : null);
 

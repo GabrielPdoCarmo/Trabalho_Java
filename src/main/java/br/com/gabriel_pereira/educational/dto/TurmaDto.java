@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.*;
 
-@JsonPropertyOrder({"id", "ano", "semestre", "CursoDto"})
+@JsonPropertyOrder({"id", "ano", "semestre", "cursoDto"})
 public class TurmaDto {
 
     private Integer id;
@@ -26,7 +26,7 @@ public class TurmaDto {
     private Integer cursoId;
 
     @JsonProperty("curso")
-    private CursoDto CursoDto;
+    private CursoDto cursoDto;
 
     public TurmaDto() {
     }
@@ -64,10 +64,10 @@ public class TurmaDto {
     }
 
     public CursoDto getCursoDto() {
-        return CursoDto;
+        return cursoDto;
     }
 
-    public void setCursoDto(CursoDto CursoDto) {
-        this.CursoDto = CursoDto;
+    public void setCursoDto(CursoDto cursoDto) {
+        this.cursoDto = cursoDto;
     }
 }

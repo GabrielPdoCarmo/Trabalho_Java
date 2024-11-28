@@ -13,39 +13,39 @@ import java.util.List;
 @RequestMapping("api/v1/alunos")
 public class AlunoController {
 
-    private final AlunoService AlunoService;
+    private final AlunoService alunoService;
 
-    public AlunoController(AlunoService AlunoService) {
-        this.AlunoService = AlunoService;
+    public AlunoController(AlunoService alunoService) {
+        this.alunoService = alunoService;
     }
 
     @PostMapping
     public ResponseEntity<AlunoDto> createAluno(@RequestBody @Valid AlunoDto alunoDto) {
-        AlunoService.createAluno(alunoDto);
+        alunoService.createAluno(alunoDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
     public ResponseEntity<List<AlunoDto>> findAllAlunos() {
-        List<AlunoDto> alunos = AlunoService.findAll();
+        List<AlunoDto> alunos = alunoService.findAll();
         return ResponseEntity.ok(alunos);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<AlunoDto> findAlunoById(@PathVariable Integer id) {
-        AlunoDto aluno = AlunoService.findById(id);
+        AlunoDto aluno = alunoService.findById(id);
         return ResponseEntity.ok(aluno);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<AlunoDto> updateAluno(@PathVariable Integer id, @RequestBody @Valid AlunoDto alunoDto) {
-        AlunoService.updateAluno(alunoDto, id);
+        alunoService.updateAluno(alunoDto, id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAluno(@PathVariable Integer id) {
-        AlunoService.deleteAluno(id);
+        alunoService.deleteAluno(id);
         return ResponseEntity.noContent().build();
     }
 }

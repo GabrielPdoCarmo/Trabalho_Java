@@ -12,12 +12,13 @@ public interface TurmaRepository extends JpaRepository<TurmaModel, Integer> {
         @Query("SELECT c FROM TurmaModel c " +
                 "WHERE (:ano IS NULL OR c.ano = :ano) " +
                 "AND (:semestre IS NULL OR c.semestre = :semestre) " +
-                "AND (:cursoId IS NULL OR c.CursoModel.id = :cursoId)")
-        Set<TurmaModel> searchClasses(
+                "AND (:cursoId IS NULL OR c.cursoModel.id = :cursoId)")
+        Set<TurmaModel> searchTurmas(
                 @Param("ano") Integer ano,
                 @Param("semestre") Integer semestre,
                 @Param("cursoId") Integer cursoId
         );
+
 }
 
 

@@ -16,27 +16,27 @@ import java.util.Set;
 @RequestMapping("api/v1/relatorios")
 public class RelatorioController {
 
-    private final NotaService NotaService;
+    private final NotaService notaService;
 
-    public RelatorioController(NotaService NotaService) {
-        this.NotaService = NotaService;
+    public RelatorioController(NotaService notaService) {
+        this.notaService = notaService;
     }
 
     @GetMapping(value = "/notaPorAluno/{id}")
     public ResponseEntity<Set<NotaRelatoriosDto>> notesByStudent(@PathVariable Integer id) {
-        Set<NotaRelatoriosDto> notes = NotaService.getNotesByAlunoId(id);
+        Set<NotaRelatoriosDto> notes = notaService.getNotesByAlunoId(id);
         return ResponseEntity.ok(notes);
     }
 
     @GetMapping(value = "/mediaPorTurma/{id}")
     public ResponseEntity<MediaTurmaDto> averageDtoResponseEntity(@PathVariable Integer id) {
-        MediaTurmaDto averageDto = NotaService.averageNotesByClass(id);
+        MediaTurmaDto averageDto = notaService.averageNotesByClass(id);
         return ResponseEntity.ok(averageDto);
     }
 
     @GetMapping(value = "/mediaPorDisciplina/{id}")
     public ResponseEntity<MediaDisciplinaDto> MediaDisciplinaDtoResponseEntity(@PathVariable Integer id) {
-        MediaDisciplinaDto averageDto = NotaService.averageNotesByDiscipline(id);
+        MediaDisciplinaDto averageDto = notaService.averageNotesByDiscipline(id);
         return ResponseEntity.ok(averageDto);
     }
 }

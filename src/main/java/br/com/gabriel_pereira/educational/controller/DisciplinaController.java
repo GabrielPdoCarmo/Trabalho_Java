@@ -14,39 +14,39 @@ import java.util.Set;
 @RequestMapping("api/v1/disciplinas")
 public class DisciplinaController {
 
-    private final DisciplinaService DisciplinaService;
+    private final DisciplinaService disciplinaService;
 
-    public DisciplinaController(DisciplinaService DisciplinaService) {
-        this.DisciplinaService = DisciplinaService;
+    public DisciplinaController(DisciplinaService disciplinaService) {
+        this.disciplinaService = disciplinaService;
     }
 
     @PostMapping
     public ResponseEntity<DisciplinaDto> createDisciplina(@RequestBody @Valid DisciplinaDto disciplinaDto) {
-        DisciplinaService.createDisciplina(disciplinaDto);
+        disciplinaService.createDisciplina(disciplinaDto);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @GetMapping
     public ResponseEntity<Set<DisciplinaDto>> findAllDisciplinas() {
-        Set<DisciplinaDto> disciplinas = DisciplinaService.findAll();
+        Set<DisciplinaDto> disciplinas = disciplinaService.findAll();
         return ResponseEntity.ok(disciplinas);
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<DisciplinaDto> findDisciplinaById(@PathVariable Integer id) {
-        DisciplinaDto disciplina= DisciplinaService.findById(id);
+        DisciplinaDto disciplina= disciplinaService.findById(id);
         return ResponseEntity.ok(disciplina);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<DisciplinaDto> updateDisciplina(@PathVariable Integer id, @RequestBody @Valid DisciplinaDto disciplinaDto) {
-        DisciplinaService.updateDisciplina(disciplinaDto, id);
+        disciplinaService.updateDisciplina(disciplinaDto, id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteDisciplina(@PathVariable Integer id) {
-        DisciplinaService.deleteDisciplina(id);
+        disciplinaService.deleteDisciplina(id);
         return ResponseEntity.noContent().build();
     }
 }

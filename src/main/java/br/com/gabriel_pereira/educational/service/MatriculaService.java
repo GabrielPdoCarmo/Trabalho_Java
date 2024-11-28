@@ -31,7 +31,7 @@ public class MatriculaService {
         this.turmaService = turmaService;
     }
 
-    public void createdMatriculation (MatriculaDto matriculaDto) {
+    public void createdMatricula (MatriculaDto matriculaDto) {
         AlunoDto alunoDto = getStudent(matriculaDto);
         TurmaDto turmaDto = getClass(matriculaDto);
 
@@ -45,7 +45,7 @@ public class MatriculaService {
         matriculaRepository.save(matriculaModel);
     }
 
-    public Set<MatriculaDto> findAllMatrilations () {
+    public Set<MatriculaDto> findAllMatriculas () {
         List<MatriculaModel> MatriculaModelList = matriculaRepository.findAll();
         Set<MatriculaDto> MatriculaDtoSet = new HashSet<>();
 
@@ -56,14 +56,14 @@ public class MatriculaService {
         return MatriculaDtoSet;
     }
 
-    public MatriculaDtofindById (Integer id) {
+    public MatriculaDto findById (Integer id) {
         MatriculaModel matriculaModel = matriculaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Id não encontrado"));
 
         return CONVERT_MODEL_TO_DTO(matriculaModel);
     }
 
-    public void updateMatriculation (Integer id, MatriculaDto matriculaDto) {
-        MatriculaDtoMatriculaDtoOld = findById(id);
+    public void updateMatricula (Integer id, MatriculaDto matriculaDto) {
+        MatriculaDto matriculaDtoOld = findById(id);
         AlunoDto alunoDto = getStudent(matriculaDto);
         TurmaDto turmaDto = getClass(matriculaDto);
 
@@ -124,7 +124,7 @@ public class MatriculaService {
         return matriculaModel;
     }
 
-    public static matriculaDtoCONVERT_MODEL_TO_DTO(MatriculaModel matriculaModel) {
+    public static MatriculaDto CONVERT_MODEL_TO_DTO(MatriculaModel matriculaModel) {
         MatriculaDto matriculaDto= new MatriculaDto();
         matriculaDto.setId(matriculaModel.getId() != null ? matriculaModel.getId() : null);
         matriculaDto.setAlunoId(matriculaModel.getAlunoModel().getId() != null ? matriculaModel.getAlunoModel().getId() : null);

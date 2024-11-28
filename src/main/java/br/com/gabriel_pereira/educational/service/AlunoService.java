@@ -28,7 +28,7 @@ public class AlunoService {
         alunoRepository.save(alunoModel);
     }
 
-    public void updateAluno(AlunoDto AlunoDto, Integer id) {
+    public void updateAluno(AlunoDto alunoDto, Integer id) {
         AlunoDto verifyAlunoDto = findById(id);
 
         if(!verifyAlunoDto.getEmail().equals(alunoDto.getEmail())){
@@ -76,10 +76,10 @@ public class AlunoService {
     public static AlunoModel CONVERT_DTO_TO_MODEL(AlunoDto alunoDto) {
         AlunoModel alunoModel = new AlunoModel();
         alunoModel.setId(alunoDto.getId() != null ? alunoDto.getId() : null);
-        alunoModel.setNome(alunoDto.getNsetNome());
+        alunoModel.setNome(alunoDto.getNome());
         alunoModel.setEmail(alunoDto.getEmail());
-        alunoModel.setMatricula(alunoDto.getMsetMatricula());
-        alunoModel.setDataNascimento(alunoDto.getdsetDataNascimento());
+        alunoModel.setMatricula(alunoDto.getMatricula());
+        alunoModel.setDataNascimento(alunoDto.getDataNascimento());
 
         return alunoModel;
     }
@@ -87,10 +87,10 @@ public class AlunoService {
     public static AlunoDto CONVERT_MODEL_TO_DTO (AlunoModel alunoModel) {
         AlunoDto alunoDto = new AlunoDto();
         alunoDto.setId(alunoModel.getId() != null ? alunoModel.getId() : null);
-        alunoDto.setNome(alunoModel.getNsetNome());
+        alunoDto.setNome(alunoModel.getNome());
         alunoDto.setEmail(alunoModel.getEmail());
         alunoDto.setMatricula(alunoModel.getMatricula());
-        alunoDto.setDataNascimento(alunoModel.getdsetDataNascimento());
+        alunoDto.setDataNascimento(alunoModel.getDataNascimento());
 
         return alunoDto;
     }
